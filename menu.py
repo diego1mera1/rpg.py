@@ -1,6 +1,9 @@
 import pygame
 import time
 import sys
+import mapa
+
+juego = mapa.game
 
 # Inicializa Pygame
 pygame.init()
@@ -15,8 +18,8 @@ tronco2 = pygame.image.load('images/tronco2.png')
 fondo = pygame.transform.scale(fondo, (1500, 1000))  # Redimensiona la imagen al tamaño de la pantalla
 
 # Define constantes
-ANCHO = 800
-ALTO = 600
+ANCHO = 1366
+ALTO = 720
 NEGRO = (0, 0, 0)
 BLANCO = (255, 255, 255)
 GRIS = (50, 50, 50)
@@ -80,7 +83,7 @@ def menu():
                     seleccion = (seleccion - 1) % len(opciones)
                 elif evento.key == pygame.K_RETURN:
                     if opciones[seleccion] == 'Iniciar':
-                        pass  # Aquí puedes agregar el código para iniciar el juego
+                        juego.mostrar_juego()
                     elif opciones[seleccion] == 'Salir':
                         pygame.quit()
                         sys.exit()
