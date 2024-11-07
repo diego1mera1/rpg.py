@@ -38,16 +38,27 @@ while running:
             pygame.quit()
             sys.exit()
 
+    # Copia de la posición del jugador
+    new_player_x, new_player_y = player_x, player_y
+
     # Obtener teclas presionadas
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        player_x -= speed
+        new_player_x -= speed
     if keys[pygame.K_RIGHT]:
-        player_x += speed
+        new_player_x += speed
     if keys[pygame.K_UP]:
-        player_y -= speed
+        new_player_y -= speed
     if keys[pygame.K_DOWN]:
-        player_y += speed
+        new_player_y += speed
+
+    # Crear un nuevo rectángulo del jugador con la nueva posición
+    new_player_rect = pygame.Rect(new_player_x, new_player_y, player_rect.width, player_rect.height)
+
+    # Verificar colisión con el tronco
+    if not new_player_rect.colliderect(tronco_rect):
+        # Si no hay colisión, actualizar la posición del jugador
+        player_x, player_y = new_player_x, new_player_y
 
     # Limitar el movimiento del jugador al tamaño del mapa
     player_x = max(0, min(player_x, MAP_WIDTH - player_rect.width))
