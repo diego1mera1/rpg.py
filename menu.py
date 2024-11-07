@@ -1,5 +1,4 @@
 import pygame
-import time
 import sys
 
 # Inicializa Pygame
@@ -23,7 +22,7 @@ GRIS = (50, 50, 50)
 
 # Configura la ventana
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
-pygame.display.set_caption('territorios inexplorados')
+pygame.display.set_caption('Menú Mejorado')
 
 # Fuentes
 fuente = pygame.font.SysFont(None, 55)
