@@ -1,6 +1,8 @@
 import pygame
 import sys
+import mapa
 
+juego = mapa.game()
 # Inicializa Pygame
 pygame.init()
 pygame.mixer.init()
@@ -22,7 +24,7 @@ GRIS = (50, 50, 50)
 
 # Configura la ventana
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
-pygame.display.set_caption('Menú Mejorado')
+pygame.display.set_caption('presa de la luna')
 
 # Fuentes
 fuente = pygame.font.SysFont(None, 55)
@@ -79,7 +81,7 @@ def menu():
                     seleccion = (seleccion - 1) % len(opciones)
                 elif evento.key == pygame.K_RETURN:
                     if opciones[seleccion] == 'Iniciar':
-                        pass  # Aquí puedes agregar el código para iniciar el juego
+                        juego.mostrar_juego() # Aquí puedes agregar el código para iniciar el juego
                     elif opciones[seleccion] == 'Salir':
                         pygame.quit()
                         sys.exit()
@@ -105,7 +107,7 @@ def menu():
         pantalla.blit(tronco2,(-100,400 ))
 
         # Dibuja el título
-        dibujar_texto("The RPG Game", NEGRO, pantalla, ANCHO // 2, 100, fuente_titulo)
+        dibujar_texto("preso de la luna", NEGRO, pantalla, ANCHO // 2, 100, fuente_titulo)
 
         # Dibuja los botones
         crear_botones(opciones, seleccion)
